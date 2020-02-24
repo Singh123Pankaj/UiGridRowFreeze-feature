@@ -1,0 +1,37 @@
+
+https://github.com/angular-ui/ui-grid/issues/972
+ // in json
+{
+ field: 'pinned',
+ visible: false, 
+ sort: {direction: uiGridConstants.ASC, priority: 0}, //use uiGridConstants.DESC for pinning to the bottom
+ suppressRemoveSort: true, 
+ sortDirectionCycle: [uiGridConstants.ASC]  //use uiGridConstants.DESC for pinning to the bottom
+}
+
+//the place where we prepare this data
+Row entities which have pinned = true rise to the top, even when other sorting are applied.
+
+1.Apply to freeze row in Ui grid this is implemented in Portfolio Rebalance grid and houseHoldRebalance Grid.
+
+
+##########################In mY project code as ##############
+  if (_obj.Name === "Portfolio Total") {
+                _obj.pinned1 = true;
+            }
+            if (_obj.Name === "Cash Summary") {
+                _obj.pinned = true;
+            }
+/* logic manipulation*/
+
+ {
+    "Field": "pinned1",
+    "IsVisible": false,
+    "TemplateType": 41
+  },
+  {
+    "Field": "pinned",
+    "IsVisible": false,
+    "TemplateType": 41
+  },
+/* in json because we have to pinned two rows
